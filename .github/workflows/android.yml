@@ -78,6 +78,7 @@ jobs:
             to: ${{ secrets.RECIPIENT_EMAIL }}
             from: ${{ secrets.SENDER_EMAIL }}
             attachments: app/build/outputs/apk/release/app-release.apk
+            priority: high
 
 
 
