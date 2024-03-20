@@ -37,8 +37,9 @@ jobs:
       - name: Generate Release APK
         run: ./gradlew assembleRelease
 
-      - name: Sign app APK
-        uses: r0adkll/sign-android-release@v1
+      - name: Sign Android release
+        uses: r0adkll/sign-android-release@v1.0.4
+
         # ID used to access action output
         id: sign_app
         with:
