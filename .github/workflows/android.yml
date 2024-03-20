@@ -50,7 +50,9 @@ jobs:
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.ALIAS_KEY_PASSWORD }}
-
+        env:
+          # override default build-tools version (33.0.0) -- optional
+          BUILD_TOOLS_VERSION: "34.0.0"
       - uses: actions/upload-artifact@main
         with:
           name: release.apk
