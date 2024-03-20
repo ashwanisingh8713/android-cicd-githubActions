@@ -22,6 +22,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Setup Android SDK Tools
+        uses: android-actions/setup-android@v3.2.0
+
+      - name: Clean the build
+        run: ./gradlew clean
+
       - name: Generate Release APK
         run: ./gradlew assembleRelease
 
