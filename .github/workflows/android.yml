@@ -50,6 +50,7 @@ jobs:
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.ALIAS_KEY_PASSWORD }}
+
       - uses: actions/upload-artifact@main
         with:
           name: release.apk
