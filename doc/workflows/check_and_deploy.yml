@@ -1,49 +1,40 @@
-name: Android CI
+name: Test and deploy
 
 on:
   push:
-    branches: ["main"]
+    tags:
+      - 'v*'
   pull_request:
-    branches: ["main"]
+    branches:
+      - master
 
 jobs:
   unit_tests:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
-      - name: Unit Tests
+      - name: Unit tests
         run: ./gradlew test
-
   android_tests:
-    runs-on: ubuntu-latest
+    runs-on: [ macos-latest ]
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-
-      - name: Enable KVM
-        run: |
-          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
-          sudo udevadm control --reload-rules
-          sudo udevadm trigger --name-match=kvm
+      - uses: actions/checkout@v2
 
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 33
+          api-level: 29
           script: ./gradlew connectedAndroidTest
-
   build:
     needs: [unit_tests, android_tests]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v2
       - name: Generate Release APK
         run: ./gradlew assembleRelease
-
-      - name: Sign app APK
+      - name: Sign APK
         uses: r0adkll/sign-android-release@v1
         # ID used to access action output
         id: sign_app
@@ -52,15 +43,26 @@ jobs:
           signingKeyBase64: ${{ secrets.SIGNING_KEY }}
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.ALIAS_KEY_PASSWORD }}
-      - uses: actions/upload-artifact@main
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+      - uses: actions/upload-artifact@master
         with:
           name: release.apk
           path: ${{steps.sign_app.outputs.signedReleaseFile}}
-      - uses: actions/upload-artifact@main
+      - uses: actions/upload-artifact@master
         with:
           name: mapping.txt
           path: app/build/outputs/mapping/release/mapping.txt
-
-
-
+  deploy-firebase:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: release.apk
+      - name: upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{secrets.FIREBASE_APP_ID}}
+          token: ${{secrets.FIREBASE_TOKEN}}
+          groups: tester
+          file: app-release-unsigned-signed.apk
