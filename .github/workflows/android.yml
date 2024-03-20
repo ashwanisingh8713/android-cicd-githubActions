@@ -25,6 +25,9 @@ jobs:
       - name: Setup Android SDK Tools
         uses: android-actions/setup-android@v3
         run: sdkmanager tools platform-tools
+        with:
+          accept-licenses: true
+          sdk_root: ${{ github.workspace }}/android-sdk
 
       - name: Clean the build
         run: ./gradlew clean
