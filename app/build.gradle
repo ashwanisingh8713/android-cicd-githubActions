@@ -9,6 +9,7 @@ plugins {
     id('kotlin-kapt')
     id("androidx.navigation.safeargs.kotlin")
     id 'androidx.room' version '2.6.1' apply false
+    id 'com.google.gms.google-services' version '4.4.1' apply false
 }
 
 
@@ -87,17 +88,18 @@ dependencies {
     // To use Kotlin annotation processing tool (kapt)
     kapt "androidx.room:room-compiler:$roomVersion"
 
-
-
-    // Architecture Components
     implementation "androidx.room:room-ktx:$roomVersion"
-//    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
     kapt "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$archLifecycleVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:32.7.4')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-crashlytics'
 
+    // Required by BuildConfig
     implementation "com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:3.1.2"
 
     // Dependencies for local unit tests
