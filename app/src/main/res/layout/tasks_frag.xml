@@ -54,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:visibility="@{viewmodel.empty ? View.GONE : View.VISIBLE}">
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/filtering_text"
@@ -76,30 +76,30 @@
                         app:items="@{viewmodel.items}" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/no_tasks_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:orientation="vertical"
-                    android:visibility="@{viewmodel.empty ? View.VISIBLE : View.GONE}">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/no_tasks_layout"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:visibility="@{viewmodel.empty ? View.VISIBLE : View.GONE}">-->
 
-                    <ImageView
-                        android:id="@+id/no_tasks_icon"
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        android:layout_gravity="center"
-                        android:src="@{ContextCompat.getDrawable(context, viewmodel.noTaskIconRes)}"
-                        android:contentDescription="@string/no_tasks_image_content_description" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/no_tasks_icon"-->
+<!--                        android:layout_width="96dp"-->
+<!--                        android:layout_height="96dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:src="@{ContextCompat.getDrawable(context, viewmodel.noTaskIconRes)}"-->
+<!--                        android:contentDescription="@string/no_tasks_image_content_description" />-->
 
-                    <TextView
-                        android:id="@+id/no_tasks_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="@dimen/list_item_padding"
-                        android:text="@{context.getString(viewmodel.noTasksLabel)}" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/no_tasks_text"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginBottom="@dimen/list_item_padding"-->
+<!--                        android:text="@{context.getString(viewmodel.noTasksLabel)}" />-->
+<!--                </LinearLayout>-->
             </RelativeLayout>
 
         </com.circleci.samples.todoapp.ScrollChildSwipeRefreshLayout>

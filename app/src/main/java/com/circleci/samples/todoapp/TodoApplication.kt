@@ -17,7 +17,10 @@
 package com.circleci.samples.todoapp
 
 import android.app.Application
+
+
 import com.circleci.samples.todoapp.data.source.TasksRepository
+import com.google.android.apps.common.testing.accessibility.framework.BuildConfig
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 

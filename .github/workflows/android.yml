@@ -62,23 +62,6 @@ jobs:
           name: mapping.txt
           path: app/build/outputs/mapping/release/mapping.txt
 
-  notification:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send a notification
-        uses: dawidd6/action-send-mail@v3
-        with:
-            server_address: smtp.gmail.com
-            server_port: 465
-            username: ${{ secrets.SENDER_EMAIL }}
-            password: ${{ secrets.SENDER_PASSWORD }}
-            subject: 'Android CI'
-            body: 'The build is successful.'
-            to: ${{ secrets.RECIPIENT_EMAIL }}
-            from: ${{ secrets.SENDER_EMAIL }}
-            attachments: app/build/outputs/apk/release/app-release.apk
-            priority: high
 
 
 

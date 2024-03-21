@@ -7,7 +7,7 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.circleci.samples.todoapp"
+        applicationId "com.cicd.todoapp"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
@@ -17,7 +17,6 @@ android {
         // "pm clear" command after each test invocation. This command ensures
         // that the app's state is completely cleared between tests.
         testInstrumentationRunnerArguments clearPackageData: 'true'
-        multiDexEnabled true
     }
 
     testOptions {
@@ -42,10 +41,10 @@ android {
         includeAndroidResources = true
         returnDefaultValues = true
     }
-    compileOptions {
+    /*compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
+    }*/
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -81,6 +80,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$archLifecycleVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    implementation "com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:3.1.2"
 
     // Dependencies for local unit tests
     testImplementation "junit:junit:$junitVersion"
