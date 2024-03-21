@@ -72,10 +72,11 @@ jobs:
           path: app/build/outputs/mapping/release/mapping.txt
 
   deploy-firebase:
-    needs: [ build ]
+
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@main
+      - name: Download artifact
+        uses: actions/download-artifact@main
         with:
           name: release.apk
       - name: upload artifact to Firebase App distribution
@@ -84,7 +85,7 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: internal-testers
-          file: release.apk
+          file: /home/runner/work/android-cicd-githubActions/android-cicd-githubActions/app-release-signed.apk
 
 
 
