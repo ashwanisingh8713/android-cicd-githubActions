@@ -41,10 +41,13 @@ android {
         includeAndroidResources = true
         returnDefaultValues = true
     }
-    /*compileOptions {
+    // androidx.navigation:navigation-safe-args-gradle-plugin:2.7.7
+    // this has max compatibility till Java-11, so cannot go beyond this
+    // Kotlin Compiler is compatible with Java-1.8
+    compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }*/
+    }
     kotlinOptions {
         jvmTarget = '1.8'
     }
