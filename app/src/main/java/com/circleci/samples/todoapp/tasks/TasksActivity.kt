@@ -27,8 +27,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.circleci.samples.todoapp.R
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 
 /**
@@ -38,11 +40,9 @@ class TasksActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var firebaseAnalytics: FirebaseAnalytics
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Obtain the FirebaseAnalytics instance.
-        firebaseAnalytics = Firebase.analytics
 
         setContentView(R.layout.tasks_act)
         setupNavigationDrawer()

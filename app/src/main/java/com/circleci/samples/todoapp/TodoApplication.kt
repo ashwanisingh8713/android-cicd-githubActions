@@ -21,6 +21,7 @@ import android.app.Application
 
 import com.circleci.samples.todoapp.data.source.TasksRepository
 import com.google.android.apps.common.testing.accessibility.framework.BuildConfig
+import com.google.firebase.FirebaseApp
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
@@ -37,6 +38,9 @@ class TodoApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG) Timber.plant(DebugTree())
+        FirebaseApp.initializeApp(this@TodoApplication)
+        if (BuildConfig.DEBUG) {
+            Timber.plant(DebugTree())
+        }
     }
 }
