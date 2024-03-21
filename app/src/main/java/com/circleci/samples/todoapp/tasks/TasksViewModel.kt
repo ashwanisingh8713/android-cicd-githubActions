@@ -71,7 +71,7 @@ class TasksViewModel(
     private var currentFiltering = TasksFilterType.ALL_TASKS
 
     // Not used at the moment
-    private val isDataLoadingError = MutableLiveData<Boolean>()
+    private val isDataLoadingError = MutableLiveData(false)
 
     private val _openTaskEvent = MutableLiveData<Event<String>>()
     val openTaskEvent: LiveData<Event<String>> = _openTaskEvent

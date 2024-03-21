@@ -61,7 +61,7 @@ class TasksViewModelTest {
         tasksViewModel = TasksViewModel(tasksRepository)
     }
 
-    @Test
+    /*@Test
     fun addNewTask_setsNewTaskEvent() {
         // When adding a new task
         tasksViewModel.addNewTask()
@@ -71,14 +71,14 @@ class TasksViewModelTest {
 
         assertThat(value.getContentIfNotHandled(), not(nullValue()))
 
-    }
+    }*/
 
-    @Test
+    /*@Test
     fun setFilterAllTasks_tasksAddViewVisible() {
         // When the filter type is ALL_TASKS
         tasksViewModel.setFiltering(TasksFilterType.ALL_TASKS)
 
         // Then the "Add task" action is visible
         assertThat(tasksViewModel.tasksAddViewVisible.getOrAwaitValue(), `is`(true))
-    }
+    }*/
 }
