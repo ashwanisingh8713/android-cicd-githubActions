@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "806890994085",
+    "project_id": "android-cicd-githubactions",
+    "storage_bucket": "android-cicd-githubactions.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806890994085:android:a480e87e113e2b4e77d04c",
+        "android_client_info": {
+          "package_name": "com.cicd.todoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJipgWognt2A0nkk3Z8ZxMKmNqpQgXIbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
