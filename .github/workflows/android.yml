@@ -72,7 +72,7 @@ jobs:
           path: app/build/outputs/mapping/release/mapping.txt
 
   deploy-firebase:
-
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
